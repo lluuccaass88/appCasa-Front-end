@@ -9,8 +9,8 @@ import axios from 'axios';
 
 
 export default function LoginScreen({ navigation }) {
-  const [user_email, setUser_email] = React.useState("");
-  const [user_secret_key, setUser_secret_key] = React.useState("");
+  const [user_email, setUser_email] = React.useState("patricia@gmail.com ");
+  const [user_secret_key, setUser_secret_key] = React.useState("Patricia123");
 
 
   return (
@@ -69,11 +69,15 @@ export default function LoginScreen({ navigation }) {
       try {
         const response = await axios.post('http://10.0.0.115:3333/auth/authenticate', data);
         
+        console.log("oi1")
+
         await AsyncStorage.setItem("token", response.data.token);
         await AsyncStorage.setItem("userId", response.data.user._id)
 
+        console.log("oi2")
+
         //Para pegar o token - const tokenTest = await AsyncStorage.getItem("token")
-        navigation.navigate('Register') //Trocar dps
+        navigation.navigate('HomeAppStudent') //Trocar dps
       } catch (err) {
         alert('Erro no login, tente novamente. '+ err.response.data.Error);
       }

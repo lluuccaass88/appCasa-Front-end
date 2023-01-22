@@ -45,18 +45,17 @@ export default function RegisterScreen({ navigation }) {
           <Text style={styles.label}>
             Escolha seu papel:
           </Text>
+
           <SelectDropdown
-            style={styles.input}
-
-            data={roles}
-            onSelect={setUser_role} //Teoricamente essa linha vai fazer com que salve no state
-
-            buttonTextAfterSelection={(selectedItem, index) => {
-              return selectedItem
-            }}
-            rowTextForSelection={(item, index) => {
-              return item
-            }}
+              data={roles}
+              onSelect={setUser_role} //Teoricamente essa linha vai fazer com que salve no state
+              buttonStyle={(styles.input)}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
           />
 
           <Text style={styles.label}>
@@ -66,7 +65,6 @@ export default function RegisterScreen({ navigation }) {
             style={styles.input}
             onChangeText={setUser_secret_key}
             value={user_secret_key}
-            placeholder="useless placeholder"
           />
 
           <View style={styles.viewPasswordRequire}>
@@ -97,7 +95,6 @@ export default function RegisterScreen({ navigation }) {
             style={styles.input}
             onChangeText={setUser_secret_key_repeat}
             value={user_secret_key_repeat}
-            placeholder="useless placeholder"
           />
 
           <TouchableHighlight
@@ -182,7 +179,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     backgroundColor: 'white',
-    borderRadius: 20
+    borderRadius: 20,
+    borderColor: 'white',
+    textAlign: 'left'
   },
   button: {
     margin: 20,
