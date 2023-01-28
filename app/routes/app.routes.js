@@ -1,21 +1,22 @@
+
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeAppStudent from '../pages/HomeAppStudent'
+import HomeStudent from '../pages/HomeAppStudent'
 
-const AppStack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
 
-function AppRoutes() {
-    //console.log("Chegou no app parabens")
+function ARoutes() {
+    
     return (
-        <AppStack.Navigator>
-            <AppStack.Screen 
-                name="HomeAppStudent"
-                component={HomeAppStudent}
+        <AuthStack.Navigator>
+            <AuthStack.Screen 
+                name="HomeStudent"
+                component={HomeStudent}
             />
-        </AppStack.Navigator>
+        </AuthStack.Navigator>
       
     );
   }
   
-  export default AppRoutes;
+  export default ARoutes;

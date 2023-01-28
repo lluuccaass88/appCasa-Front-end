@@ -1,31 +1,13 @@
 import React, {useContext} from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 import InputValidators from '../services/inputValidators'
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "../services/api"
-import {useAuth} from '../contexts/auth';
-
-//import api from '../services/api'
-import axios from 'axios';
+import AuthContext from '../contexts/auth';
 
 export default function LoginScreen({ navigation }) {
+  const { signed, signIn } = useContext(AuthContext)
+
   const [user_email, setUser_email] = React.useState("patricia@gmail.com ");
   const [user_secret_key, setUser_secret_key] = React.useState("Patricia123");
-
-
-
-  //===================!!=======================
-  const { signIn, user } = useAuth();
-
-
-
-  //const {signed, signIn, user} = useContext(AuthContext)
-  // console.log(signed)
-  // console.log(user)
-  //===================!!=======================
-
-
-
 
   return (
     
@@ -87,10 +69,9 @@ export default function LoginScreen({ navigation }) {
 
       if(successSigin){
         console.log("Login realizado com sucesso")
-        // navigation.navigate('HomeAppStudent') //Trocar dps
-      }else(
+      }else{
         alert("Erro ao fazer o login! Tente novamente.")
-      )
+      }
     }
   }
 }

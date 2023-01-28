@@ -13,7 +13,6 @@ function AuthRoutes() {
                 component={LoginScreen}
             />
         </AuthStack.Navigator>
-      
     );
   }
   
