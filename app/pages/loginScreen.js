@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 import InputValidators from '../services/inputValidators'
-import AuthContext from '../contexts/auth';
+import {useAuth} from '../contexts/auth';
 
 export default function LoginScreen({ navigation }) {
-  const { signed, signIn } = useContext(AuthContext)
+  const { signed, signIn } = useAuth()
 
   const [user_email, setUser_email] = React.useState("patricia@gmail.com ");
   const [user_secret_key, setUser_secret_key] = React.useState("Patricia123");
