@@ -1,17 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 import InputValidators from '../services/inputValidators'
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
-//import api from '../services/api'
-import axios from 'axios';
-
-
+import {useAuth} from '../contexts/auth';
 
 export default function LoginScreen({ navigation }) {
+  const { signed, signIn } = useAuth()
+
   const [user_email, setUser_email] = React.useState("patricia@gmail.com ");
   const [user_secret_key, setUser_secret_key] = React.useState("Patricia123");
-
 
   return (
     
@@ -54,32 +50,27 @@ export default function LoginScreen({ navigation }) {
     
   )
 
+    //38:51 parei nesse tempo no video
+
   async function login(){
     let returnVerf = InputValidators.passwordValidator(user_secret_key)
 
-    if(!InputValidators.emailValidator(user_email)){
+    if(!InputValidators.emailValidator(user_email)){ //Verifica se foi digitado um email valido
       alert("Por favor diite um email valido")
-    }else if(!returnVerf.status){
+    }else if(!returnVerf.status){ //Verifica se foi digitado uma senha valida
       alert(`Senha incorreta: ${returnVerf.message}`)
     }else{
       const data = {
         user_email,
         user_secret_key,
       };
-      try {
-        const response = await axios.post('http://10.0.0.115:3333/auth/authenticate', data);
-        
-        console.log("oi1")
 
-        await AsyncStorage.setItem("token", response.data.token);
-        await AsyncStorage.setItem("userId", response.data.user._id)
+      const successSigin = signIn(data)
 
-        console.log("oi2")
-
-        //Para pegar o token - const tokenTest = await AsyncStorage.getItem("token")
-        navigation.navigate('HomeAppStudent') //Trocar dps
-      } catch (err) {
-        alert('Erro no login, tente novamente. '+ err.response.data.Error);
+      if(successSigin){
+        console.log("Login realizado com sucesso")
+      }else{
+        alert("Erro ao fazer o login! Tente novamente.")
       }
     }
   }
