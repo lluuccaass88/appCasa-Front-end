@@ -5,7 +5,7 @@ export default function HomeAppStudent({ navigation }) {
 
   return (
     
-    <ImageBackground source={require('../assets/background1.jpg')} style={styles.imageBackground}>
+    <ImageBackground source={require('../..assets/background1.jpg')} style={styles.imageBackground}>
       <SafeAreaView style={styles.container}>
         <Text style={styles.text}>
             Ajude a salvar a Galaxia!

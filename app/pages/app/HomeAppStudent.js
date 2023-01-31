@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Text, SafeAreaView, Button} from 'react-native';
-import AuthContext from '../contexts/auth'
+import AuthContext from '../../contexts/auth'
 
 export default function HomeStudent({ navigation }) {
   const { user, SignOut } = useContext(AuthContext)

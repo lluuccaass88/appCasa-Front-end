@@ -2,7 +2,7 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeStudent from '../pages/HomeAppStudent'
+import HomeStudent from '../pages/app/HomeAppStudent'
 
 const AuthStack = createNativeStackNavigator();
 

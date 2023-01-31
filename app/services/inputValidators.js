@@ -1,5 +1,7 @@
 export default InputValidators = {
     emailValidator(emailUser){
+        console.log(emailUser)
+
         var reg = /\S+@\S+\.\S+/;
 
         if (reg.test(emailUser) === false) {   

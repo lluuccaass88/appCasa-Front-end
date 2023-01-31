@@ -43,6 +43,14 @@ export function AuthProvider({ children }){
         })
     }
 
+    async function register(data){
+        axios.post('http://10.0.0.115:3333/auth/register', data).then( async(res) =>{
+            console.log(`A resposta do servidor é: ${res.data}`);
+        }).catch((err)=>{
+            alert('Erro ao cadastrar, tente novamente.'+ err);
+        })
+    }
+
     function SignOut(){
         AsyncStorage.clear().then(()=>{
             setUser(null)
@@ -55,7 +63,7 @@ export function AuthProvider({ children }){
     }
 
     return (
-        <AuthContext.Provider value={{signed: !!user, user, signIn, SignOut}}>
+        <AuthContext.Provider value={{signed: !!user, user, signIn, SignOut, register}}>
             {children}
         </AuthContext.Provider>
     );

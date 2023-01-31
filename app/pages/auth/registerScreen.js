@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, View, ScrollView, Label } from 'react-native';
+import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, View, ScrollView } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown'
 import axios from 'axios';
-import InputValidators from '../services/inputValidators'
+import InputValidators from '../../services/inputValidators'
+import {useAuth} from '../../contexts/auth';
 
 
 export default function RegisterScreen({ navigation }) {
+  const { register } = useAuth()
 
   const [user_email, setUser_email] = React.useState("");
   const [user_secret_key, setUser_secret_key] = React.useState("");
@@ -16,10 +18,10 @@ export default function RegisterScreen({ navigation }) {
   const roles = ["Estudante", "Professor"]
 
   return (
-    <ImageBackground source={require('../assets/background1.jpg')} style={styles.imageBackground}>
+    <ImageBackground source={require('../../assets/background1.jpg')} style={styles.imageBackground}>
      <ScrollView>
       <SafeAreaView style={styles.container}>
-        <Image source={require('../assets/disco-voador2.png')} style={styles.imageForeground}/>
+        <Image source={require('../../assets/disco-voador2.png')} style={styles.imageForeground}/>
           <Text style={styles.text}>
             Cadastrar
           </Text>
@@ -65,6 +67,7 @@ export default function RegisterScreen({ navigation }) {
             style={styles.input}
             onChangeText={setUser_secret_key}
             value={user_secret_key}
+            secureTextEntry={true}
           />
 
           <View style={styles.viewPasswordRequire}>
@@ -95,11 +98,12 @@ export default function RegisterScreen({ navigation }) {
             style={styles.input}
             onChangeText={setUser_secret_key_repeat}
             value={user_secret_key_repeat}
+            secureTextEntry={true}
           />
 
           <TouchableHighlight
             style={styles.button}
-            onPress={() => cadastrar()}
+            onPress={() => handleRegister()}
           > 
             <Text 
               style={styles.buttonText}>
@@ -113,13 +117,15 @@ export default function RegisterScreen({ navigation }) {
     </ImageBackground>
   )
 
-  async function cadastrar(){
-    let returnVerf = InputValidators.passwordValidator(user_secret_key)
+  async function handleRegister(){
+
+    const verfSenha = InputValidators.passwordValidator(user_secret_key)
+    setUser_email(user_email.replace(' ', ''))
 
     if(!InputValidators.emailValidator(user_email)){
-      alert("Por favor diite um email valido")
-    }else if(!returnVerf.status){
-      alert(`Erro: ${returnVerf.message}`)
+      alert("Por favor digite um email valido")
+    }else if(!verfSenha.status){
+      alert(`Erro: ${verfSenha.message}`)
     }else if(user_secret_key_repeat != user_secret_key_repeat){
       alert("A senha não é igual a digitada primeiramente.")
     }else{
@@ -129,15 +135,8 @@ export default function RegisterScreen({ navigation }) {
         user_name,
         user_role
       };
-
-      try {
-        const response = await axios.post('http://10.0.0.115:3333/auth/register', data);
-        console.log(`A resposta do servidor é: ${response.data}`);
-        //navigation.navigate('HomeTest')
-      } catch (err) {
-        console.log(err)
-        alert('Erro no login, tente novamente.'+ err);
-      }
+    register(data)
+    navigation.navigate('LoginScreen')
     }
   }
 }
