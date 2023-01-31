@@ -1,19 +1,19 @@
 import React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
-import InputValidators from '../services/inputValidators'
-import {useAuth} from '../contexts/auth';
+import InputValidators from '../../services/inputValidators'
+import {useAuth} from '../../contexts/auth';
 
 export default function LoginScreen({ navigation }) {
   const { signed, signIn } = useAuth()
 
-  const [user_email, setUser_email] = React.useState("patricia@gmail.com ");
-  const [user_secret_key, setUser_secret_key] = React.useState("Patricia123");
+  const [user_email, setUser_email] = React.useState("");
+  const [user_secret_key, setUser_secret_key] = React.useState("");
 
   return (
     
-    <ImageBackground source={require('../assets/background1.jpg')} style={styles.imageBackground}>
+    <ImageBackground source={require('../../assets/background1.jpg')} style={styles.imageBackground}>
       <SafeAreaView style={styles.container}>
-      <Image source={require('../assets/disco-voador2.png')} style={styles.imageForeground}/> 
+      <Image source={require('../../assets/disco-voador2.png')} style={styles.imageForeground}/> 
       <Text style={styles.text}>
         Login
       </Text>
@@ -37,7 +37,7 @@ export default function LoginScreen({ navigation }) {
         />
         <TouchableHighlight
           style={styles.button}
-          onPress={() => login()}
+          onPress={() => handleLogin()}
         >
           <Text 
             style={styles.buttonText}>
@@ -45,14 +45,13 @@ export default function LoginScreen({ navigation }) {
           </Text>
         </TouchableHighlight>
 
+
       </SafeAreaView>
     </ImageBackground>
     
   )
 
-    //38:51 parei nesse tempo no video
-
-  async function login(){
+  async function handleLogin(){
     let returnVerf = InputValidators.passwordValidator(user_secret_key)
 
     if(!InputValidators.emailValidator(user_email)){ //Verifica se foi digitado um email valido
