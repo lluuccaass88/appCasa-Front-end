@@ -44,11 +44,8 @@ export default function LoginScreen({ navigation }) {
             Login
           </Text>
         </TouchableHighlight>
-
-
       </SafeAreaView>
     </ImageBackground>
-    
   )
 
   async function handleLogin(){
@@ -64,12 +61,12 @@ export default function LoginScreen({ navigation }) {
         user_secret_key,
       };
 
-      const successSigin = signIn(data)
+      const resSign = await signIn(data)
 
-      if(successSigin){
+      if(resSign){
         console.log("Login realizado com sucesso")
       }else{
-        alert("Erro ao fazer o login! Tente novamente.")
+        alert(`Erro ao fazer o login, email ou senha incorreta.`)
       }
     }
   }

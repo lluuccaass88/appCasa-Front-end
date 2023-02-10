@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, View, ScrollView } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown'
-import axios from 'axios';
 import InputValidators from '../../services/inputValidators'
 import {useAuth} from '../../contexts/auth';
 
@@ -120,6 +119,7 @@ export default function RegisterScreen({ navigation }) {
   async function handleRegister(){
 
     const verfSenha = InputValidators.passwordValidator(user_secret_key)
+
     setUser_email(user_email.replace(' ', ''))
 
     if(!InputValidators.emailValidator(user_email)){
@@ -136,6 +136,13 @@ export default function RegisterScreen({ navigation }) {
         user_role
       };
     register(data)
+
+    setUser_email("")
+    setUser_secret_key("")
+    setUser_secret_key_repeat("")
+    setUser_name("")
+    setUser_role("")
+    
     navigation.navigate('LoginScreen')
     }
   }

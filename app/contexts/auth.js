@@ -34,12 +34,13 @@ export function AuthProvider({ children }){
             setUser(res.data.user)
             await AsyncStorage.setItem('@RNAuth:user', JSON.stringify(res.data.user))
             await AsyncStorage.setItem('@RNAuth:token', JSON.stringify(res.data.token))
-            Api.defaults.headers['Authorization'] = `Bearer ${storagedToken}`
-            return true  
+            //Api.defaults.headers['Authorization'] = `Bearer ${storagedToken}`
+            return true
         }).catch((err)=>{
             console.log("Falha no login...")
-            console.log(`Erro no login: ${err}`)
-            return false    
+            console.log(`Erro no login: ${err}`)  
+            console.log(JSON.stringify(err))
+            return false
         })
     }
 

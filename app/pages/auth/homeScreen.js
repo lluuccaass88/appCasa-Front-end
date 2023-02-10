@@ -1,20 +1,23 @@
 import * as React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 
+import LoginScreen from '../../pages/auth/loginScreen'
+import RegisterScreen from '../../pages/auth/registerScreen'
+
 export default function HomeAppStudent({ navigation }) {
 
   return (
     
-    <ImageBackground source={require('../..assets/background1.jpg')} style={styles.imageBackground}>
+    <ImageBackground source={require('../../assets/background1.jpg')} style={styles.imageBackground}>
       <SafeAreaView style={styles.container}>
         <Text style={styles.text}>
             Ajude a salvar a Galaxia!
         </Text>
-        <Image source={require('../assets/logo2.png')} style={styles.imageForeground}/> 
+        <Image source={require('../../assets/logo2.png')} style={styles.imageForeground}/> 
         
         <TouchableHighlight
           style={styles.button}
-          onPress={() => {navigation.navigate('Login')}}
+          onPress={() => {navigation.navigate('LoginScreen')}}
         >
           <Text 
             style={styles.buttonText}>
@@ -24,7 +27,7 @@ export default function HomeAppStudent({ navigation }) {
 
         <TouchableHighlight
           style={styles.button}
-          onPress={() => {navigation.navigate('Register')}}
+          onPress={() => {navigation.navigate('RegisterScreen')}}
         >
           <Text 
             style={styles.buttonText}>
