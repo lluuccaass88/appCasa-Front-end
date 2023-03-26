@@ -1,21 +1,21 @@
-// import React, { createContext, useState, useEffect, useContext } from "react";
-// import Icon from 'react-native-vector-icons/Ionicons';
-// // import LoginScreen from '../pages/loginScreen'
+import React, { createContext, useState, useEffect, useContext } from "react";
 
-// const MenuContext = createContext({})
+const MenuContext = createContext({})
 
-// export default MenuContext;
+export function MenuProvider({ children }){  
+const [visibleModal, setVisibleModal] = useState(false)
 
-// //const [visibleModal, setvisibleModal] = useState(false)
+        return(
+            <MenuContext.Provider value={{setVisibleModal, visibleModal}}>
+                {children}
+            </MenuContext.Provider>
+        ) 
+}
 
-// export function MenuProvider({ children }){     
-//         return(
-//             <Icon name="settings-outline" size={30} color="white"  onPress={() =>{setvisibleModal(true)} }/>
-//         ) 
-// }
+export default MenuContext;
 
-// // export function useAuth(){
-// //     const context = useContext(AuthContext)
+export function useMenu(){
+    const context = useContext(MenuContext)
 
-// //     return context
-// // }
+    return context
+}

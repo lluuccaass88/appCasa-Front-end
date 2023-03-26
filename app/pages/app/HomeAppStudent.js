@@ -1,16 +1,11 @@
-import React, {useContext} from 'react';
-import {TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, Button} from 'react-native';
-import AuthContext from '../../contexts/auth'
+import React, {useContext, useEffect, useState} from 'react';
+import {TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, Button, Modal} from 'react-native';
+import {useMenu} from '../../contexts/menu'
+import ActionModalMenu from '../../components/ActionModalMenu'
+// import GemeScreen from "../pages/app/game/gemeScreen";
 
-export default function HomeStudent({ navigation }) {
-  const { user, SignOut } = useContext(AuthContext)
-
-  // function handleSignOut(){
-  //   SignOut()
-  // }
-
-  // <Button title='Sign out' onPress={handleSignOut} />
-
+export default function HomeStudent({ navigation }) { 
+  const { visibleModal, setVisibleModal } = useMenu() //Agora eu preciso descobrir uma forma de quando o visibleModal ficar como true ele disparar uma função
 
   function handleNewGame(){
     console.log("Novo jogo")
@@ -30,7 +25,7 @@ export default function HomeStudent({ navigation }) {
 
         <TouchableHighlight
           style={styles.button}
-          onPress={() => handleNewGame()}
+          onPress={() => navigation.navigate('GemeScreen')}
         >
           <Text 
             style={styles.buttonText}>
@@ -48,6 +43,15 @@ export default function HomeStudent({ navigation }) {
           </Text>
         </TouchableHighlight>
 
+        <Modal 
+          visible={visibleModal}
+          transparent={true}
+          onRequestClose={ () => setVisibleModal(false)}
+        >
+          <ActionModalMenu 
+            handleClose={ () => setVisibleModal(false)}
+          />
+        </Modal>
       </SafeAreaView>
     </ImageBackground>
 

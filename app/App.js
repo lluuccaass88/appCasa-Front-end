@@ -13,6 +13,8 @@ const Stack = createNativeStackNavigator();
 
 import Routes from './routes';
 
+
+
 import {AuthProvider} from './contexts/auth';
 
 
