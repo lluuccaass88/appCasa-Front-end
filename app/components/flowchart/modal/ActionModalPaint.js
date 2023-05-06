@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ActivityIndicator, ImageBackground, StyleSheet, TouchableOpacity, View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useAuth} from '../contexts/Auth';
+import {useAuth} from '../contexts/auth';
 
 export default function ActionModalMenu({ handleClose }) {
   const { SignOut } = useAuth()

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, Button, Modal} from 'react-native';
-import {useMenu} from '../../contexts/menu'
+import {useMenu} from '../../contexts/Menu'
 import ActionModalMenu from '../../components/ActionModalMenu'
 // import GemeScreen from "../pages/app/game/gemeScreen";
 
@@ -25,7 +25,7 @@ export default function HomeStudent({ navigation }) {
 
         <TouchableHighlight
           style={styles.button}
-          onPress={() => navigation.navigate('GemeScreen')}
+          onPress={() => navigation.navigate('GameScreen')}
         >
           <Text 
             style={styles.buttonText}>
@@ -35,7 +35,7 @@ export default function HomeStudent({ navigation }) {
 
         <TouchableHighlight
           style={styles.button}
-          onPress={() => handleContinue()}
+          onPress={() => navigation.navigate('Teste')}
         >
           <Text 
             style={styles.buttonText}>

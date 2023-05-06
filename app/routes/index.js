@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
-import {useAuth} from "../contexts/auth";
-import {MenuProvider} from "../contexts/menu";
+import {useAuth} from "../contexts/Auth";
+import {MenuProvider} from "../contexts/Menu";
 
 import AppRoutes from './app.routes'
 import AuthRoutes from './auth.routes'

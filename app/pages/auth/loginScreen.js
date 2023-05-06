@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 import InputValidators from '../../services/inputValidators'
-import {useAuth} from '../../contexts/auth';
+import {useAuth} from '../../contexts/Auth';
 
 export default function LoginScreen({ navigation }) {
   const { signed, signIn } = useAuth()

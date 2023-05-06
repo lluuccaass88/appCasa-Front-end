@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, View, ScrollView } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown'
 import InputValidators from '../../services/inputValidators'
-import {useAuth} from '../../contexts/auth';
+import {useAuth} from '../../contexts/Auth';
 
 
 export default function RegisterScreen({ navigation }) {

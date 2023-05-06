@@ -12,11 +12,7 @@ const Stack = createNativeStackNavigator();
 // import HomeAppStudent from './views/HomeAppStudent'
 
 import Routes from './routes';
-
-
-
-import {AuthProvider} from './contexts/auth';
-
+import {AuthProvider} from './contexts/Auth'
 
 function App() {
   return (
