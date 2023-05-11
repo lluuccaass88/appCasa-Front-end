@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, Button, Modal} from 'react-native';
 import {useMenu} from '../../contexts/Menu'
-import ActionModalMenu from '../../components/ActionModalMenu'
+import ActionModalMenu from '../../components/modalComponents/ActionModalMenu'
 // import GemeScreen from "../pages/app/game/gemeScreen";
 
 export default function HomeStudent({ navigation }) { 

@@ -4,32 +4,26 @@ import { createNativeStackNavigator, Image, TouchableHighlight, View } from '@re
 // import Icon from 'react-native-ionicons'
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useMenu} from '../contexts/Menu'
-import { ModalProvider } from '../contexts/ModalContext';
+import { FlowChartComandsProvider } from '../contexts/FlowChartComands';
 
 import GameScreen from "../pages/app/game/GameScreen";
 import ChangeComand from "../pages/app/game/ChangeComand";
 import HomeStudent from '../pages/app/HomeAppStudent'
 
-
 const AppStack = createNativeStackNavigator();
 
-
-
-
 function AppRoutes() {
-    // const [visibleModal, setVisibleModal] = useState(false);
-    const {setVisibleModal} = useMenu()
 
+    const {setVisibleModal} = useMenu()    
 
     function BackIcon() {//Função que mostra o menu, mas eu queria que ao clicar no menu aparecesse o omenu
         return (
         <Icon name="menu" size={45} color="white"  onPress={() =>{setVisibleModal(true)} }/>
         );
     }
-
     
     return (
-        <ModalProvider>
+        <FlowChartComandsProvider>
             <AppStack.Navigator
                 screenOptions={{
                     title: 'App casa',
@@ -59,7 +53,7 @@ function AppRoutes() {
                         component={ChangeComand}           
                     />
             </AppStack.Navigator>
-        </ModalProvider>
+        </FlowChartComandsProvider>
 
       
     );

@@ -1,10 +1,11 @@
 import { Canvas, useTouchHandler } from '@shopify/react-native-skia';
 import React from 'react';
-import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight } from 'react-native';
+import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight, Modal } from 'react-native';
 import ConditionalComponent from '../../../components/flowchart/ConditionalComponent.js';
 import LoopComponent from '../../../components/flowchart/LoopComponent.js';
 import PaintComponent from '../../../components/flowchart/PaintComponent.js';
-import {useModal} from '../../../contexts/ModalContext.js'
+import {useModal} from '../../../contexts/FlowChartComands.js'
+import ActionModalFlowchart from '../../../components/modalComponents/ActionModalFlowchart.js'
 
 
 const { widthScreen, heightScreen } = Dimensions.get('window');
@@ -12,7 +13,7 @@ const { widthScreen, heightScreen } = Dimensions.get('window');
 
 export default ChangeComand = ({ navigation }) => {
 
-  const {setVisibleModal} = useModal()
+  const {setVisibleModal, visibleModal} = useModal()
 
 
   const overallWidth = Dimensions.get('window').width;
@@ -100,7 +101,7 @@ export default ChangeComand = ({ navigation }) => {
           transparent={true}
           onRequestClose={ () => setVisibleModal(false)}
         >
-          <ActionModalMenu 
+          <ActionModalFlowchart 
             handleClose={ () => setVisibleModal(false)}
           />
         </Modal>

@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 
 const ModalContext = createContext({})
 
-export function ModalProvider({ children }){ 
+export function FlowChartComandsProvider({ children }){ 
      
 const [visibleModal, setVisibleModal] = useState(false)
 
