@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { center } from '@shopify/react-native-skia';
-import {SafeAreaView, ActivityIndicator, Dimensions, StyleSheet, TouchableOpacity, View, Text, TextInput,TouchableHighlight} from 'react-native';
-
-const overallWidth = Dimensions.get('window').width;
+import {SafeAreaView, StyleSheet, View, Text, TextInput,TouchableHighlight} from 'react-native';
 
 export default function Paint({ handleClose }) {
 
@@ -16,8 +13,8 @@ export default function Paint({ handleClose }) {
                <Text style={styles.title}> 
                     Escolha as coordenadas X e Y que deseja pintar! 
                 </Text> 
-                   
-            <View style={styles.form}>
+                  
+             <View style={styles.form}>
                 <View style={styles.containerAlign}>
                     <Text style={styles.label}>X:</Text>
                     <TextInput 
@@ -32,9 +29,9 @@ export default function Paint({ handleClose }) {
                         onChangeText={setyPosition}
                         value={yPosition}
                     />    
-                </View>
-                
-                <TouchableHighlight
+                </View> QUANDO ELE ENTRA AQUI ELE CRACHA O EXPO :)
+{/*
+                 <TouchableHighlight
                     style={styles.button}
                     //onPress={() => handleRegister()}
                 > 
@@ -42,10 +39,10 @@ export default function Paint({ handleClose }) {
                     style={styles.buttonText}>
                     Inserir
                     </Text>
-                </TouchableHighlight>
+                </TouchableHighlight> */}
 
             </View>
-        
+         
         </SafeAreaView>
   )
 }
@@ -66,14 +63,14 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         marginTop: '5%'
-      },
-      form: {
+       },
+       form: {
         alignItems: 'center',
         marginTop: "40%",
         paddingHorizontal: 15,
       },
       containerAlign:{
-        flexDirection: 'row',
+        flexDirection: 'colum',
       },
       label: {
         color: 'white',
@@ -91,19 +88,19 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         textAlign: 'left',
       },
-      button: {
-        margin: 20,
-        padding: 1,
-        width: 146,
-        height: 35,
-        backgroundColor: '#3CDE38',
-        borderRadius: 10,
-        marginTop: "45%"
-      },
-      buttonText: {
-        textAlign: 'center',
-        fontSize: 20,
-        fontWeight: '400',
-      },
+      // button: {
+      //   margin: 20,
+      //   padding: 1,
+      //   width: 146,
+      //   height: 35,
+      //   backgroundColor: '#3CDE38',
+      //   borderRadius: 10,
+      //   marginTop: "45%"
+      // },
+      // buttonText: {
+      //   textAlign: 'center',
+      //   fontSize: 20,
+      //   fontWeight: '400',
+      // },
 })
 

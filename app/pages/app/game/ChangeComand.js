@@ -2,18 +2,20 @@ import { Canvas, useTouchHandler } from '@shopify/react-native-skia';
 import React from 'react';
 import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight, Modal } from 'react-native';
 import ConditionalComponent from '../../../components/flowchart/ConditionalComponent.js';
-import LoopComponent from '../../../components/flowchart/LoopComponent.js';
-import PaintComponent from '../../../components/flowchart/PaintComponent.js';
 import {useModal} from '../../../contexts/FlowChartComands.js'
 import ActionModalFlowchart from '../../../components/modalComponents/ActionModalFlowchart.js'
 
+import LoopComponent from '../../../components/flowchart/LoopComponent.js';
+import PaintComponent from '../../../components/flowchart/PaintComponent.js';
+import Repeat from '../../../components/modalComponents/comandsFlowchart/Repeat.js';
 
 const { widthScreen, heightScreen } = Dimensions.get('window');
 
 
 export default ChangeComand = ({ navigation }) => {
 
-  const {setVisibleModal, visibleModal} = useModal()
+  const {setVisibleModal, visibleModal, setConditionalId, conditionalId} = useModal()
+  
 
 
   const overallWidth = Dimensions.get('window').width;
@@ -38,6 +40,7 @@ export default ChangeComand = ({ navigation }) => {
   const touchHandlerPaint = useTouchHandler({
     onActive: () => {
       console.log("OI")
+      setConditionalId(0)
       setVisibleModal(true)
     }
   });
@@ -45,12 +48,16 @@ export default ChangeComand = ({ navigation }) => {
   const touchHandlerConditional = useTouchHandler({
     onActive: () => {
       console.log("OI triangulo")
+      setConditionalId(1)
+      setVisibleModal(true)
     }
   });
 
   const touchHandlerLoop = useTouchHandler({
     onActive: () => {
       console.log("OI hexagono")
+      setConditionalId(2)
+      setVisibleModal(true)
     }
   });
 
@@ -102,6 +109,7 @@ export default ChangeComand = ({ navigation }) => {
           onRequestClose={ () => setVisibleModal(false)}
         >
           <ActionModalFlowchart 
+            // conditionalId={conditionalId}
             handleClose={ () => setVisibleModal(false)}
           />
         </Modal>

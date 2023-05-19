@@ -5,11 +5,12 @@ const ModalContext = createContext({})
 export function FlowChartComandsProvider({ children }){ 
      
 const [visibleModal, setVisibleModal] = useState(false)
+const [conditionalId, setConditionalId] = useState();
 
 console.log("O valor do modal é: " + visibleModal)
 
         return(
-            <ModalContext.Provider value={{setVisibleModal, visibleModal}}>
+            <ModalContext.Provider value={{setVisibleModal, visibleModal,setConditionalId, conditionalId}}>
                 {children}
             </ModalContext.Provider>
         ) 
