@@ -5,6 +5,7 @@ import { createNativeStackNavigator, Image, TouchableHighlight, View } from '@re
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useMenu} from '../contexts/Menu'
 import { FlowChartComandsProvider } from '../contexts/FlowChartComands';
+import { ArrayComandsProvider } from '../contexts/ArrayComands'
 
 import GameScreen from "../pages/app/game/GameScreen";
 import ChangeComand from "../pages/app/game/ChangeComand";
@@ -24,35 +25,37 @@ function AppRoutes() {
     
     return (
         <FlowChartComandsProvider>
-            <AppStack.Navigator
-                screenOptions={{
-                    title: 'App casa',
-                    headerStyle: {
-                    backgroundColor: '#050505',
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                    fontWeight: 'bold',
-                    },
-                    headerTitleAlign: 'center',
-                    headerLeft: () => <BackIcon />
-                }}
-            >   
-                <AppStack.Screen 
-                    name="HomeStudent"
-                    component={HomeStudent}           
-                />
-                
-                <AppStack.Screen 
-                    name="GameScreen"
-                    component={GameScreen}           
-                />
-
+            <ArrayComandsProvider>
+                <AppStack.Navigator
+                    screenOptions={{
+                        title: 'App casa',
+                        headerStyle: {
+                        backgroundColor: '#050505',
+                        },
+                        headerTintColor: '#fff',
+                        headerTitleStyle: {
+                        fontWeight: 'bold',
+                        },
+                        headerTitleAlign: 'center',
+                        headerLeft: () => <BackIcon />
+                    }}
+                >   
                     <AppStack.Screen 
-                        name="ChangeComand"
-                        component={ChangeComand}           
+                        name="HomeStudent"
+                        component={HomeStudent}           
                     />
-            </AppStack.Navigator>
+                    
+                    <AppStack.Screen 
+                        name="GameScreen"
+                        component={GameScreen}           
+                    />
+
+                        <AppStack.Screen 
+                            name="ChangeComand"
+                            component={ChangeComand}           
+                        />
+                </AppStack.Navigator>
+            </ArrayComandsProvider>
         </FlowChartComandsProvider>
 
       

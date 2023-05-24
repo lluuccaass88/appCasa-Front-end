@@ -1,53 +1,45 @@
 import React from 'react';
-import {SafeAreaView, ActivityIndicator, Dimensions, StyleSheet, TouchableOpacity, View, Text} from 'react-native';
+import { SafeAreaView, ActivityIndicator, Dimensions, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import Paint from './comandsFlowchart/Paint';
 import Conditional from './comandsFlowchart/Conditional'
 import Repeat from './comandsFlowchart/Repeat';
-import {useModal} from '../../contexts/FlowChartComands'
+import { useModal } from '../../contexts/FlowChartComands'
 
 
 const overallWidth = Dimensions.get('window').width;
 
+export default function ActionModalFlowchart({ onDataChanged }) {
+  const { conditionalId } = useModal()
 
-// export default function ActionModalFlowchart({ handleClose, props }) {
-  export default function ActionModalFlowchart({ handleClose}) {
-  // aqui bugou, eu queria passar o id do comando pelas props
-  const {conditionalId} = useModal()
-  
-  console.log("Id do comando: " + conditionalId)
+  const handleDataChange = (newData) => {
+    onDataChanged(newData)
+  };
 
-  if(conditionalId === 0){
-    return (  
-      <SafeAreaView style={styles.container} >
-
+  if (conditionalId === 0) {
+    return (
+      <SafeAreaView style={styles.container}>
         <View style={styles.content}>
-          <Paint/>       
+          <Paint onDataChanged={handleDataChange} /> 
         </View>
-
       </SafeAreaView>
     )
-  }else if(conditionalId === 1){
-    return (  
-      <SafeAreaView style={styles.container} >
-
+  } else if (conditionalId === 1) {
+    return (
+      <SafeAreaView style={styles.container}>
         <View style={styles.content}>
-          <Conditional/>       
+          <Conditional />
         </View>
-
       </SafeAreaView>
     )
-  }else{
-    return (  
-      <SafeAreaView style={styles.container} >
-
+  } else {
+    return (
+      <SafeAreaView style={styles.container}>
         <View style={styles.content}>
-          <Repeat/>
+          <Repeat />
         </View>
-
       </SafeAreaView>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -62,4 +54,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E1D1D'
   }
 })
-

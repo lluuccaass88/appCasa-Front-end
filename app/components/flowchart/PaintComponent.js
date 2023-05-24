@@ -2,7 +2,7 @@ import { Dimensions } from 'react-native';
 import { Canvas, RoundedRect, LinearGradient, vec, Circle, Group, Text, useFont, TextPath, Skia, Blur } from '@shopify/react-native-skia';
 
 export default function PaintComponent(props) {
-
+  
   const yText = props.position.positionPaint.y + 55;
 
   const fontSize = 32;

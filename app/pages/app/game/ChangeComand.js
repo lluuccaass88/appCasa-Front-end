@@ -3,11 +3,13 @@ import React from 'react';
 import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight, Modal } from 'react-native';
 import ConditionalComponent from '../../../components/flowchart/ConditionalComponent.js';
 import {useModal} from '../../../contexts/FlowChartComands.js'
-import ActionModalFlowchart from '../../../components/modalComponents/ActionModalFlowchart.js'
+import {useArray} from '../../../contexts/ArrayComands.js'
 
+import ActionModalFlowchart from '../../../components/modalComponents/ActionModalFlowchart.js'
 import LoopComponent from '../../../components/flowchart/LoopComponent.js';
 import PaintComponent from '../../../components/flowchart/PaintComponent.js';
-import Repeat from '../../../components/modalComponents/comandsFlowchart/Repeat.js';
+
+import ServiceComands from '../../../services/ServiceComands.js';
 
 const { widthScreen, heightScreen } = Dimensions.get('window');
 
@@ -15,6 +17,7 @@ const { widthScreen, heightScreen } = Dimensions.get('window');
 export default ChangeComand = ({ navigation }) => {
 
   const {setVisibleModal, visibleModal, setConditionalId, conditionalId} = useModal()
+  const {comands, setComands} = useArray()
   
 
 
@@ -22,11 +25,13 @@ export default ChangeComand = ({ navigation }) => {
 
   const positionX = (overallWidth / 2) - 100;
 
+  // const positions = {
+  //   positionPaint: {
+  //     x: positionX,
+  //     y: 0
+  //   },
   const positions = {
-    positionPaint: {
-      x: positionX,
-      y: 0
-    },
+    positionPaint: ServiceComands.buildComandObjectJustPosition(positionX, 0),
     positionConditional: {
       x: positionX,
       y: 40
@@ -36,6 +41,8 @@ export default ChangeComand = ({ navigation }) => {
       y: 130
     }
   }
+
+  console.log("Por favor aparece algo" + positions.positionPaint)
 
   const touchHandlerPaint = useTouchHandler({
     onActive: () => {
@@ -61,6 +68,17 @@ export default ChangeComand = ({ navigation }) => {
     }
   });
 
+  const handleDataChanger = (newData) => {
+    setComands(
+      {
+        "x": newData[0],
+        "y": newData[1]
+      }
+      )
+    setVisibleModal(false)
+    navigation.navigate('GameScreen')
+  };
+
 
   return (
     <ImageBackground source={require('../../../assets/backgroundEscuro.png')} style={styles.imageBackground}>
@@ -84,6 +102,7 @@ export default ChangeComand = ({ navigation }) => {
         </TouchableHighlight>
 
         <Canvas style={{ height: 90 }} onTouch={touchHandlerPaint}>
+          {/* <PaintComponent position={positions.positionPaint} /> */}
           <PaintComponent position={positions} />
         </Canvas>
 
@@ -107,9 +126,10 @@ export default ChangeComand = ({ navigation }) => {
           visible={visibleModal}
           transparent={true}
           onRequestClose={ () => setVisibleModal(false)}
-        >
+      >
           <ActionModalFlowchart 
             // conditionalId={conditionalId}
+            onDataChanged={handleDataChanger}
             handleClose={ () => setVisibleModal(false)}
           />
         </Modal>

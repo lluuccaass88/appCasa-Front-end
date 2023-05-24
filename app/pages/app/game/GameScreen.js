@@ -3,9 +3,14 @@ import { StyleSheet, Text, Dimensions, ImageBackground, TouchableHighlight } fro
 import { Canvas } from '@shopify/react-native-skia';
 const { widthScreen, heightScreen } = Dimensions.get('window');
 import StartComponent from '../../../components/flowchart/FinalComponent.js'
-
+import PaintComponent from '../../../components/flowchart/PaintComponent.js';
+import { useArray } from '../../../contexts/ArrayComands.js';
 
 export default GameScreen = ({ navigation }) => {
+
+  const { comandsArray } = useArray() //Vem do arrayComands
+
+  console.log("Tamanho do array -> " + comandsArray[0])
 
   const position = {
     y: 100,
@@ -27,6 +32,11 @@ export default GameScreen = ({ navigation }) => {
 
       <StartComponent position={position} />
 
+      { comandsArray.map((item, key)=>(
+//          <PaintComponent position={item} />
+            <Text style={styles.text}>Aqui vai ficar o comando</Text>
+      ))}
+
     </ImageBackground>
   );
 
@@ -39,12 +49,14 @@ const styles = StyleSheet.create({
   },
   text: {
     margin: 25,
+    marginTop: -20, //Retirar depos
     fontWeight: '400',
-    fontSize: 40,
+    fontSize: 20,
     color: "white"
   },
   button: {
     margin: 20,
+    marginBottom: -20, 
     padding: 1,
     width: widthScreen,
     height: 40,

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
 
-import LoginScreen from '../../pages/auth/loginScreen'
-import RegisterScreen from '../../pages/auth/registerScreen'
-
 export default function HomeAppStudent({ navigation }) {
 
   return (
