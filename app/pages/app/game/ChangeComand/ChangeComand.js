@@ -1,17 +1,17 @@
 import { Canvas, useTouchHandler } from '@shopify/react-native-skia';
 import React from 'react';
 import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight, Modal } from 'react-native';
-import ConditionalComponent from '../../../components/flowchart/ConditionalComponent.js';
-import {useModal} from '../../../contexts/FlowChartComands.js'
-import {useArray} from '../../../contexts/ArrayComands.js'
+import ConditionalComponent from '../../../../components/flowchart/ConditionalComponent.js';
+import {useModal} from '../../../../contexts/FlowChartComands.js'
+import {useArray} from '../../../../contexts/ArrayComands.js'
 
-import ActionModalFlowchart from '../../../components/modalComponents/ActionModalFlowchart.js'
-import LoopComponent from '../../../components/flowchart/LoopComponent.js';
-import PaintComponent from '../../../components/flowchart/PaintComponent.js';
+//Components
+import ActionModalFlowchart from '../../../../components/modalComponents/ActionModalFlowchart.js'
+import LoopComponent from '../../../../components/flowchart/LoopComponent.js';
+import PaintComponent from '../../../../components/flowchart/PaintComponent.js';
 
-import ServiceComands from '../../../services/ServiceComands.js';
-
-const { widthScreen, heightScreen } = Dimensions.get('window');
+import styles from './Style.js';
+import Controller from './Controller.js';
 
 
 export default ChangeComand = ({ navigation }) => {
@@ -19,11 +19,13 @@ export default ChangeComand = ({ navigation }) => {
   const {setVisibleModal, visibleModal, setConditionalId, conditionalId} = useModal()
   const {comands, setComands} = useArray()
   
-
-
   const overallWidth = Dimensions.get('window').width;
 
   const positionX = (overallWidth / 2) - 100;
+
+
+
+
 
   // const positions = {
   //   positionPaint: {
@@ -31,7 +33,7 @@ export default ChangeComand = ({ navigation }) => {
   //     y: 0
   //   },
   const positions = {
-    positionPaint: ServiceComands.buildComandObjectJustPosition(positionX, 0),
+    // positionPaint: ServiceComands.buildComandObjectJustPosition(positionX, 0),
     positionConditional: {
       x: positionX,
       y: 40
@@ -40,9 +42,8 @@ export default ChangeComand = ({ navigation }) => {
       x: positionX,
       y: 130
     }
-  }
+  } 
 
-  console.log("Por favor aparece algo" + positions.positionPaint)
 
   const touchHandlerPaint = useTouchHandler({
     onActive: () => {
@@ -81,7 +82,7 @@ export default ChangeComand = ({ navigation }) => {
 
 
   return (
-    <ImageBackground source={require('../../../assets/backgroundEscuro.png')} style={styles.imageBackground}>
+    <ImageBackground source={require('../../../../assets/backgroundEscuro')} style={styles.imageBackground}>
 
       <ScrollView >
 
@@ -103,7 +104,8 @@ export default ChangeComand = ({ navigation }) => {
 
         <Canvas style={{ height: 90 }} onTouch={touchHandlerPaint}>
           {/* <PaintComponent position={positions.positionPaint} /> */}
-          <PaintComponent position={positions} />
+          {/* <PaintComponent position={positions} /> */}
+          <PaintComponent position={Controller.positionPaint(overallWidth)} />
         </Canvas>
 
         <Canvas style={{ height: 180 }} onTouch={touchHandlerConditional}>
@@ -140,38 +142,3 @@ export default ChangeComand = ({ navigation }) => {
 
 }
 
-const styles = StyleSheet.create({
-
-  imageBackground: {
-    flex: 1,
-  },
-  text: {
-    margin: 25,
-    marginBottom: 5,
-    fontWeight: '400',
-    fontSize: 30,
-    color: "white",
-    textAlign: "center"
-  },
-  button: {
-    margin: 20,
-    marginBottom: 30,
-    padding: 1,
-    width: widthScreen,
-    height: 40,
-    backgroundColor: '#3CDE38',
-    borderRadius: 10
-  },
-  buttonText: {
-    textAlign: 'center',
-    fontSize: 25,
-    fontWeight: '450',
-  },
-  comand: {
-    // alignSelf: 'center',
-  },
-  canva: {
-    flex: 1,
-    alignContent: "center"
-  }
-})

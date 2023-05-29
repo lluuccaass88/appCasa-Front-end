@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
-import { isNumeric } from '../../../utils/Verifications';
+import { isNumeric } from '../../../services/util/InputValidators';
 
 export default function Paint({ onDataChanged  }) {
 

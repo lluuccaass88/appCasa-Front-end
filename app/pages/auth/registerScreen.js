@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image, View, ScrollView } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown'
-import InputValidators from '../../services/inputValidators'
+import InputValidators from '../../services/util/InputValidators'
 import {useAuth} from '../../contexts/Auth';
 
 

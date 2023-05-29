@@ -35,6 +35,10 @@ export default InputValidators = {
             data.status = true
         }   
             return data
+    },
+
+    isNumeric(value){
+        return !isNaN(value) && !isNaN(parseFloat(value));
     }
 
 }

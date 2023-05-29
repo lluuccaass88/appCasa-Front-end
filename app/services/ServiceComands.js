@@ -13,8 +13,10 @@ export default ServiceComands = {
 
     buildComandObjectJustPosition(x, y){
         return {
-            "x": x,
-            "y": y
+            // "position": {
+                "x": x,
+                "y": y
+            // }
         }
     }
 

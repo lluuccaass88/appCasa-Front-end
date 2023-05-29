@@ -7,9 +7,9 @@ import {useMenu} from '../contexts/Menu'
 import { FlowChartComandsProvider } from '../contexts/FlowChartComands';
 import { ArrayComandsProvider } from '../contexts/ArrayComands'
 
-import GameScreen from "../pages/app/game/GameScreen";
-import ChangeComand from "../pages/app/game/ChangeComand";
-import HomeStudent from '../pages/app/HomeAppStudent'
+import GameScreen from "../pages/app/game/GameScreen/GameScreen";
+import ChangeComand from "../pages/app/game/ChangeComand/ChangeComand";
+import HomeStudent from '../pages/app/homeAppStudent/HomeAppStudent'
 
 const AppStack = createNativeStackNavigator();
 

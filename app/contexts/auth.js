@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Loading from '../components/loading'
-import Api from '../services/api'
+import Api from '../services/util/api'
 // import LoginScreen from '../pages/loginScreen'
 
 const AuthContext = createContext({})

@@ -2,8 +2,12 @@ import { Dimensions } from 'react-native';
 import { Canvas, RoundedRect, LinearGradient, vec, Circle, Group, Text, useFont, TextPath, Skia, Blur } from '@shopify/react-native-skia';
 
 export default function PaintComponent(props) {
+
+console.log("Paint controller  -= " + props.x)
+
+  const yText =  55;
+
   
-  const yText = props.position.positionPaint.y + 55;
 
   const fontSize = 32;
   const font = useFont(require("../../assets/fonts/Roboto/Roboto-Regular.ttf"), fontSize);
@@ -18,6 +22,8 @@ export default function PaintComponent(props) {
       <RoundedRect
         x={props.position.positionPaint.x}
         y={props.position.positionPaint.y}
+        
+
         width={200}
         height={90}
         r={25}

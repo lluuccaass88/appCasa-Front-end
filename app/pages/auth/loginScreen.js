@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableHighlight, Text, SafeAreaView,  TextInput, StyleSheet, ImageBackground, Image} from 'react-native';
-import InputValidators from '../../services/inputValidators'
+import InputValidators from '../../services/util/InputValidators'
 import {useAuth} from '../../contexts/Auth';
 
 export default function LoginScreen({ navigation }) {
